@@ -1,6 +1,7 @@
 define(['jquery'],function($){
     function Window() {
         this.cfg = {
+            title:"Alert",
             msg:"system message",
             handle: null,
             width:500,
@@ -13,7 +14,17 @@ define(['jquery'],function($){
             var CFG = $.extend(this.cfg,cfg);
             var $alertBox = $('<div class="window-alert"></div>');
             $alertBox.appendTo('body');
-            $alertBox.html(CFG.msg);
+
+            var $alertHd = $('<div class="alert-hd"></div>'),
+                $alertHdTitle = $('<div class="title"></div>'),
+                $alertHdClose = $('<a  href="#" class="close">X</a>');
+
+            $alertHdTitle.html(CFG.title);
+
+            $alertHdTitle.appendTo($alertHd);
+            $alertHdClose.appendTo($alertHd);
+            $alertHd.appendTo($alertBox);
+
 
             var $confirmBtn = $('<input type="button" value="OK" class="confirm-btn">');
             $confirmBtn.appendTo($alertBox);
