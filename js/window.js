@@ -2,6 +2,7 @@ define(['jquery'],function($){
     function Window() {
         this.cfg = {
             title:"Alert",
+            hasCloseBtn:false,
             msg:"",
             handle: null,
             width:500,
@@ -22,9 +23,10 @@ define(['jquery'],function($){
             $alertHdTitle.html(CFG.title);
 
             $alertHdTitle.appendTo($alertHd);
-            $alertHdClose.appendTo($alertHd);
+            if(CFG.hasCloseBtn) {
+                $alertHdClose.appendTo($alertHd);
+            }
             $alertHd.appendTo($alertBox);
-
 
             var $confirmBtn = $('<input type="button" value="OK" class="confirm-btn">');
             $confirmBtn.appendTo($alertBox);
