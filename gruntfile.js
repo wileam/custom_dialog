@@ -1,7 +1,7 @@
 module.exports = function(grunt) {
 
   // LiveReload的默认端口号，你也可以改成你想要的端口号
-  var lrPort = 35729;
+  var lrPort = 35728;
   // 使用connect-livereload模块，生成一个与LiveReload脚本
   // <script src="http://127.0.0.1:35729/livereload.js?snipver=1" type="text/javascript"></script>
   var lrSnippet = require('connect-livereload')({
@@ -92,7 +92,7 @@ module.exports = function(grunt) {
         files: {
           expand: true,
           cwd: 'css/less/',
-          src: ['*.less',!'_*.less'],
+          src: ['*.less','!_*.less'],
           dest: 'css/',
           ext: '.css'
         }
