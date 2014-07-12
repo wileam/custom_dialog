@@ -1,16 +1,19 @@
 define(['jquery'],function($){
     function Window() {
         this.cfg = {
+            msg:"system message",
+            handle: null,
             width:500,
-            height:300,
+            height:300
         };
     }
 
     Window.prototype = {
-        alert: function(msg,handle,cfg){
+        alert: function(cfg){
+            var CFG = $.extend(this.cfg,cfg);
             var $alertBox = $('<div class="window-alert"></div>');
             $alertBox.appendTo('body');
-            $alertBox.html(msg);
+            $alertBox.html(CFG.msg);
 
             var $confirmBtn = $('<input type="button" value="OK" class="confirm-btn">');
             $confirmBtn.appendTo($alertBox);
@@ -27,17 +30,15 @@ define(['jquery'],function($){
             $confirmBtn.on('click', function(event) {
                 event.preventDefault();
                 /* Act on the event */
-                handle && handle();
+                CFG.handle && CFG.handle();
                 $alertBox.remove();
             });
 
-            $.extend(this.cfg, cfg);
-
             $alertBox.css({
-                height: this.cfg.height + "px",
-                width: this.cfg.width + "px",
-                top: (this.cfg.y || (window.innerHeight - this.cfg.height)/2) + "px",
-                left: (this.cfg.x || (window.innerWidth - this.cfg.width)/2) + "px"
+                height: CFG.height + "px",
+                width: CFG.width + "px",
+                top: (CFG.y || (window.innerHeight - CFG.height)/2) + "px",
+                left: (CFG.x || (window.innerWidth - CFG.width)/2) + "px"
             });
 
         },
