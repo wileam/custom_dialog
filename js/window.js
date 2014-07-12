@@ -16,6 +16,7 @@ define(['jquery'],function($){
             var $alertBox = $('<div class="window-alert"></div>');
             $alertBox.appendTo('body');
 
+            // alert-hd
             var $alertHd = $('<div class="alert-hd"></div>'),
                 $alertHdTitle = $('<div class="title"></div>'),
                 $alertHdClose = $('<a  href="#" class="close">X</a>');
@@ -28,8 +29,24 @@ define(['jquery'],function($){
             }
             $alertHd.appendTo($alertBox);
 
-            var $confirmBtn = $('<input type="button" value="OK" class="confirm-btn">');
-            $confirmBtn.appendTo($alertBox);
+            // alert-bd
+            var $alertBd = $('<div class="alert-bd"></div>'),
+                $alertBdMsg = $('<div class="content"></div>');
+
+            $alertBdMsg.html(CFG.msg);
+            $alertBdMsg.appendTo($alertBd);
+            $alertBd.appendTo($alertBox);
+
+            $alertBd.css({
+                height: (CFG.height - 82) + "px"
+            });
+
+            // alert-footer
+            var $alertFooter = $('<div class="alert-footer"></div>'),
+                $confirmBtn = $('<input type="button" value="OK" class="confirm-btn">');
+
+            $confirmBtn.appendTo($alertFooter);
+            $alertFooter.appendTo($alertBox);
 
             $confirmBtn.on('click', function(event) {
                 event.preventDefault();
