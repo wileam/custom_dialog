@@ -4,8 +4,8 @@ require.config({
     }
 });
 
-require(['jquery','window'],function('$','w'){
+require(['jquery','window'],function($,w){
     $('#a').click(function(){
-        new w.Window().alert();
+        new w.Window().alert("welcome!");
     })
 })
