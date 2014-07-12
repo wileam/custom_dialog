@@ -2,7 +2,7 @@ define(['jquery'],function($){
     function Window() {
         this.cfg = {
             title:"Alert",
-            msg:"system message",
+            msg:"",
             handle: null,
             width:500,
             height:300
