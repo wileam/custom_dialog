@@ -29,15 +29,6 @@ define(['jquery'],function($){
             var $confirmBtn = $('<input type="button" value="OK" class="confirm-btn">');
             $confirmBtn.appendTo($alertBox);
 
-            // if(handle) {
-            //     $confirmBtn.on('click',function(event) {
-            //         event.preventDefault();
-            //         /* Act on the event */
-            //         handle();
-            //         $alertBox.remove();
-            //     });
-            // }
-
             $confirmBtn.on('click', function(event) {
                 event.preventDefault();
                 /* Act on the event */
