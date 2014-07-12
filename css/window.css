@@ -129,20 +129,25 @@ table {
 *,
 *:before,
 *:after {
+  -webkit-box-sizing: border-box;
+  /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box;
+  /* Firefox, other Gecko */
   box-sizing: border-box;
+  /* Opera/IE 8+ */
 }
 body {
   height: 100%;
   width: 100%;
 }
 .window-alert {
-  position: absolute;
+  position: fixed;
   top: 50%;
   left: 50%;
   width: 500px;
   height: 300px;
-  margin-top: -150px;
-  margin-left: -250px;
+  top: 180px;
+  left: 250px;
   border: 1px solid black;
 }
 .window-alert .alert-hd {
