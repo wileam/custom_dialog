@@ -8,14 +8,15 @@ require(['jquery','window'],function($,w){
     $('#a').click(function(){
         new w.Window().alert({
             title:"提示",
-            hasCloseBtn:true,
             msg:"welcome!",
             handle: function(){
                 window.alert("You close the dialog.");
             },
             width: 300,
             height: 150,
-            y: 100
+            y: 100,
+            hasCloseBtn:true,
+            hasMask:true
         })
     })
 });

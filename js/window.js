@@ -2,17 +2,24 @@ define(['jquery'],function($){
     function Window() {
         this.cfg = {
             title:"Alert",
-            hasCloseBtn:false,
             msg:"",
             handle: null,
             width:500,
-            height:300
+            height:300,
+            hasCloseBtn:false,
+            hasMask:true
         };
     }
 
     Window.prototype = {
         alert: function(cfg){
             var CFG = $.extend(this.cfg,cfg);
+            // mask
+            if(CFG.hasMask) {
+                var $windowMask = $('<div class="window-mask"></div>');
+                $windowMask.appendTo('body');
+            }
+
             var $alertBox = $('<div class="window-alert"></div>');
             $alertBox.appendTo('body');
 
@@ -28,6 +35,13 @@ define(['jquery'],function($){
                 $alertHdClose.appendTo($alertHd);
             }
             $alertHd.appendTo($alertBox);
+
+            $alertHdClose.on('click', function(event) {
+                event.preventDefault();
+
+                $alertBox.remove();
+                CFG.hasMask && $windowMask.remove();
+            });
 
             // alert-bd
             var $alertBd = $('<div class="alert-bd"></div>'),
@@ -53,6 +67,7 @@ define(['jquery'],function($){
                 /* Act on the event */
                 CFG.handle && CFG.handle();
                 $alertBox.remove();
+                CFG.hasMask && $windowMask.remove();
             });
 
             $alertBox.css({

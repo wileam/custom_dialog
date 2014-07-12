@@ -149,6 +149,7 @@ body {
   top: 180px;
   left: 250px;
   border: 1px solid black;
+  background-color: #fff;
 }
 .window-alert .alert-hd {
   background-color: #f2f2f2;
@@ -185,4 +186,13 @@ body {
 .window-alert .alert-footer .confirm-btn {
   margin-top: 15px;
   height: 20px;
+}
+.window-mask {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-color: #000;
+  opacity: 0.3;
 }
