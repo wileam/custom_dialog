@@ -6,6 +6,8 @@ require.config({
 
 require(['jquery','window'],function($,w){
     $('#a').click(function(){
-        new w.Window().alert("welcome!");
+        new w.Window().alert("welcome!",function(){
+        	window.alert("You close the dialog.");
+        });
     })
 })
