@@ -23,7 +23,7 @@ define(['jquery','jqueryUI'],function($,$UI){
         },
         fire: function(type, data) {
             if (this.handlers[type] instanceof Array) {
-                var handlers = this.handler[type];
+                var handlers = this.handlers[type];
                 for (var i = 0; i < handlers.length; i++) {
                     handlers[i](data);
                 }
