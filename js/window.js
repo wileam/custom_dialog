@@ -1,4 +1,4 @@
-define(['jquery'],function($){
+define(['jquery','jqueryUI'],function($,$UI){
     function Window() {
         this.cfg = {
             title:"Alert",
@@ -7,7 +7,9 @@ define(['jquery'],function($){
             width:500,
             height:300,
             hasCloseBtn:false,
-            hasMask:true
+            hasMask:true,
+            isDraggable:true,
+            dragHandle:null
         };
     }
 
@@ -76,6 +78,14 @@ define(['jquery'],function($){
                 top: (CFG.y || (window.innerHeight - CFG.height)/2) + "px",
                 left: (CFG.x || (window.innerWidth - CFG.width)/2) + "px"
             });
+
+            if (CFG.isDraggable) {
+                if (CFG.dragHandle) {
+                    $alertBox.draggable({handle:CFG.dragHandle});
+                } else{
+                    $alertBox.draggable();
+                }
+            }
 
         },
         comfirm: function(){},

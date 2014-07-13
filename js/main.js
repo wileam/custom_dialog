@@ -1,9 +1,11 @@
 require.config({
     paths:{
-        jquery: 'jquery-1.9.0'
+        jquery: 'jquery-1.9.0',
+        jqueryUI: 'jquery-ui-1.11.0.min'
     }
 });
 
+// 此处require jquery是因为下面要用到jquery的选择器，如果里面不需要用到jq，只需要require window进来即可。
 require(['jquery','window'],function($,w){
     $('#a').click(function(){
         new w.Window().alert({
@@ -16,7 +18,9 @@ require(['jquery','window'],function($,w){
             height: 150,
             y: 100,
             hasCloseBtn:true,
-            hasMask:true
+            hasMask:true,
+            isDraggable:true,
+            dragHandle:'.alert-hd'
         })
     })
 });
