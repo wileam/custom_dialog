@@ -9,7 +9,7 @@ require.config({
 require(['jquery','window'],function($,w){
     $('#a').click(function(){
         new w.Window().alert({
-            title:"提示",
+            title:"提示（标题区域可拖动）",
             msg:"welcome!",
             handle: function(){
                 window.alert("You close the dialog.");
