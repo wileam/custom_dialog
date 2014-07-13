@@ -8,11 +8,12 @@ require.config({
 // 此处require jquery是因为下面要用到jquery的选择器，如果里面不需要用到jq，只需要require window进来即可。
 require(['jquery','window'],function($,w){
     $('#a').click(function(){
-        new w.Window().alert({
+        var win = new w.Window();
+        win.alert({
             title:"提示（标题区域可拖动）",
             msg:"welcome!",
             handle: function(){
-                window.alert("You close the dialog.");
+                alert("You close the dialog.");
             },
             width: 300,
             height: 150,
@@ -21,6 +22,9 @@ require(['jquery','window'],function($,w){
             hasMask:true,
             isDraggable:true,
             dragHandle:'.alert-hd'
+        });
+        win.on('close',function(){
+            alert("This is the second handler for comfirm btn.");
         })
-    })
+    });
 });

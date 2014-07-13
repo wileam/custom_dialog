@@ -11,11 +11,27 @@ define(['jquery','jqueryUI'],function($,$UI){
             isDraggable:true,
             dragHandle:null
         };
+        this.handlers = {};
     }
 
     Window.prototype = {
+        on: function(type, handler) {
+            if (typeof this.handlers[type] == "undefined") {
+                this.handlers[type] = [];
+            }
+            this.handlers[type].push(handler);
+        },
+        fire: function(type, data) {
+            if (this.handlers[type] instanceof Array) {
+                var handlers = this.handler[type];
+                for (var i = 0; i < handlers.length; i++) {
+                    handlers[i](data);
+                }
+            }
+        },
         alert: function(cfg){
-            var CFG = $.extend(this.cfg,cfg);
+            var CFG = $.extend(this.cfg,cfg),
+                that = this;
             // mask
             if(CFG.hasMask) {
                 var $windowMask = $('<div class="window-mask"></div>');
@@ -67,10 +83,14 @@ define(['jquery','jqueryUI'],function($,$UI){
             $confirmBtn.on('click', function(event) {
                 event.preventDefault();
                 /* Act on the event */
-                CFG.handle && CFG.handle();
+                that.fire('close');
                 $alertBox.remove();
                 CFG.hasMask && $windowMask.remove();
             });
+
+            if (CFG.handle) {
+                this.on('close',CFG.handle);
+            };
 
             $alertBox.css({
                 height: CFG.height + "px",
