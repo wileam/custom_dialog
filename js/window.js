@@ -20,6 +20,8 @@ define(['jquery','jqueryUI'],function($,$UI){
                 this.handlers[type] = [];
             }
             this.handlers[type].push(handler);
+
+            return this
         },
         fire: function(type, data) {
             if (this.handlers[type] instanceof Array) {
@@ -28,6 +30,8 @@ define(['jquery','jqueryUI'],function($,$UI){
                     handlers[i](data);
                 }
             }
+
+            return this
         },
         alert: function(cfg){
             var CFG = $.extend(this.cfg,cfg),
@@ -106,6 +110,8 @@ define(['jquery','jqueryUI'],function($,$UI){
                     $alertBox.draggable();
                 }
             }
+
+            return this
 
         },
         comfirm: function(){},
